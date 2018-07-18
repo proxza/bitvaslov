@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
@@ -14,6 +15,7 @@ import java.util.Comparator;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -23,8 +25,8 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Главные поля игры
     private final String TITLE = "BitvaSlov"; // Название программы
-    private static String FILE_NAME = "/resources/dict.txt"; // Путь к словарю
-    private static String TMP_DIR = System.getenv("APPDATA") + "\\BitvaSlovTMP\\"; // Путь к временной папке 
+    private static final String FILE_NAME = "/resources/dict.txt"; // Путь к словарю
+    private static final String TMP_DIR = System.getenv("APPDATA") + "\\BitvaSlovTMP\\"; // Путь к временной папке 
     private static final String TMP_FILE_NAME = TMP_DIR + "winners.txt"; // Название файла с рейтингом
     private static String playerName; // Имя игрока
     private static ArrayList<String> wordsArray = new ArrayList<String>(); // Словарь
@@ -223,7 +225,7 @@ public class NewJFrame extends javax.swing.JFrame {
             BufferedReader bf = new BufferedReader(new FileReader(TMP_FILE_NAME));
             String line;
 
-            ArrayList<PlayersList> arr = new ArrayList<PlayersList>();
+            ArrayList<PlayersList> arr = new ArrayList<>();
 
             while ((line = bf.readLine()) != null) {
                 String[] mass = line.split(":");
@@ -371,7 +373,7 @@ public class NewJFrame extends javax.swing.JFrame {
     // и помещает в статический массив слов с которым мы и будем работать
     private ArrayList<String> getWordsFromFile(String fileName) throws Exception {
 
-        ArrayList<String> arr = new ArrayList<String>();
+        ArrayList<String> arr = new ArrayList<>();
 
         // Если есть словарь игрока
         if (checkPlayerDict) {
@@ -561,6 +563,20 @@ public class NewJFrame extends javax.swing.JFrame {
 
         try {
             if (jButton1.getText().equals(thisIsWord)) {
+
+                // Костыль он же слушатель для изменения цвета кнопки при правильном ответе в момент нажатия (клика)
+                jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        jButton1.setBackground(Color.GREEN);
+                    }
+
+                    @Override
+                    public void mouseExited(java.awt.event.MouseEvent evt) {
+                        jButton1.setBackground(UIManager.getColor("control"));
+                    }
+                });
+
                 getXP(true); // Даем опыт
 
                 // Перебираем массив слов для того что бы найти угадываемое слово и по его индексу его удалить из массива
@@ -572,6 +588,20 @@ public class NewJFrame extends javax.swing.JFrame {
                     }
                 }
             } else {
+
+                // Костыль он же слушатель для изменения цвета кнопки при НЕправильном ответе в момент нажатия (клика)
+                jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        jButton1.setBackground(Color.RED);
+                    }
+
+                    @Override
+                    public void mouseExited(java.awt.event.MouseEvent evt) {
+                        jButton1.setBackground(UIManager.getColor("control"));
+                    }
+                });
+
                 getXP(false); // Снимаем жизнь
             }
         } catch (Exception ex) {
@@ -589,6 +619,20 @@ public class NewJFrame extends javax.swing.JFrame {
 
         try {
             if (jButton2.getText().equals(thisIsWord)) {
+
+                // Костыль он же слушатель для изменения цвета кнопки при правильном ответе в момент нажатия (клика)
+                jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        jButton2.setBackground(Color.GREEN);
+                    }
+
+                    @Override
+                    public void mouseExited(java.awt.event.MouseEvent evt) {
+                        jButton2.setBackground(UIManager.getColor("control"));
+                    }
+                });
+
                 getXP(true); // Даем опыт
 
                 // Перебираем массив слов для того что бы найти угадываемое слово и по его индексу его удалить из массива
@@ -600,6 +644,20 @@ public class NewJFrame extends javax.swing.JFrame {
                     }
                 }
             } else {
+
+                // Костыль он же слушатель для изменения цвета кнопки при НЕправильном ответе в момент нажатия (клика)
+                jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        jButton2.setBackground(Color.RED);
+                    }
+
+                    @Override
+                    public void mouseExited(java.awt.event.MouseEvent evt) {
+                        jButton2.setBackground(UIManager.getColor("control"));
+                    }
+                });
+
                 getXP(false); // Снимаем жизнь
             }
         } catch (Exception ex) {
@@ -616,6 +674,20 @@ public class NewJFrame extends javax.swing.JFrame {
 
         try {
             if (jButton3.getText().equals(thisIsWord)) {
+
+                // Костыль он же слушатель для изменения цвета кнопки при правильном ответе в момент нажатия (клика)
+                jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        jButton3.setBackground(Color.GREEN);
+                    }
+
+                    @Override
+                    public void mouseExited(java.awt.event.MouseEvent evt) {
+                        jButton3.setBackground(UIManager.getColor("control"));
+                    }
+                });
+
                 getXP(true); // Даем опыт
 
                 // Перебираем массив слов для того что бы найти угадываемое слово и по его индексу его удалить из массива
@@ -627,6 +699,20 @@ public class NewJFrame extends javax.swing.JFrame {
                     }
                 }
             } else {
+
+                // Костыль он же слушатель для изменения цвета кнопки при НЕправильном ответе в момент нажатия (клика)
+                jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        jButton3.setBackground(Color.RED);
+                    }
+
+                    @Override
+                    public void mouseExited(java.awt.event.MouseEvent evt) {
+                        jButton3.setBackground(UIManager.getColor("control"));
+                    }
+                });
+
                 getXP(false); // Снимаем жизнь
             }
         } catch (Exception ex) {
@@ -643,6 +729,20 @@ public class NewJFrame extends javax.swing.JFrame {
 
         try {
             if (jButton4.getText().equals(thisIsWord)) {
+
+                // Костыль он же слушатель для изменения цвета кнопки при правильном ответе в момент нажатия (клика)
+                jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        jButton4.setBackground(Color.GREEN);
+                    }
+
+                    @Override
+                    public void mouseExited(java.awt.event.MouseEvent evt) {
+                        jButton4.setBackground(UIManager.getColor("control"));
+                    }
+                });
+
                 getXP(true); // Даем опыт
 
                 // Перебираем массив слов для того что бы найти угадываемое слово и по его индексу его удалить из массива
@@ -654,6 +754,20 @@ public class NewJFrame extends javax.swing.JFrame {
                     }
                 }
             } else {
+
+                // Костыль он же слушатель для изменения цвета кнопки при НЕправильном ответе в момент нажатия (клика)
+                jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        jButton4.setBackground(Color.RED);
+                    }
+
+                    @Override
+                    public void mouseExited(java.awt.event.MouseEvent evt) {
+                        jButton4.setBackground(UIManager.getColor("control"));
+                    }
+                });
+
                 getXP(false); // Снимаем жизнь
             }
         } catch (Exception ex) {
@@ -712,6 +826,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new NewJFrame().setVisible(true);
             }
@@ -766,7 +881,7 @@ class MyMouseListener implements MouseListener {
         if (eggs == rnd) {
             NewJFrame nf = new NewJFrame();
             ImageIcon icon = new ImageIcon(getClass().getResource("/resources/images/duck.png"));
-            JLabel jCopyRight = new JLabel("<html>Powered by Proxz :) <br />Written on Java/Swing<br /><br />Version: 1.5.1</html>");
+            JLabel jCopyRight = new JLabel("<html>Powered by Proxz :) <br />Written on Java/Swing<br /><br />Version: 1.6.1</html>");
             jCopyRight.setFont(new java.awt.Font("Verdana", 0, 11));
 
             try {
@@ -801,6 +916,7 @@ class PlayersList {
         this.guessWords = gw;
     }
 
+    @Override
     public String toString() {
         return "<td>" + this.name + "</td><td>" + this.guessWords + "</td><td>" + this.xp + "</td>";
     }
